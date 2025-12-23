@@ -32,7 +32,7 @@ public class OrderTests extends BaseTest {
         this.comment = comment;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "isTopButton: {0}, user: {1}")
     public static Object[][] getDateSetForOrder() {
         return new Object[][]{
                 {true, "Адам", "Богов", "г. Эдем, ул. Змия, д.15", "Бульвар Рокоссовского", "89567762322", "01.01.2012", "сутки", "чёрный жемчуг", "Не кидать камни"},

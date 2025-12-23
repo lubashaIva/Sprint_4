@@ -17,7 +17,7 @@ public class DropdownTests extends BaseTest {
         this.text = text;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Question: {0}, Answer: {1}")
     public static Object[][] getDateSetForOrder() {
         return new Object[][]{
                 { 0, Resources.answer1 },
