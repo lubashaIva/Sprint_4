@@ -19,6 +19,10 @@ public class BasePage {
                 .until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
+    WebElement findElement(By element) {
+        return driver.findElement(element);
+    }
+
     void scrollToElement(By element) {
         WebElement dropDownElement = driver.findElement(element);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", dropDownElement);

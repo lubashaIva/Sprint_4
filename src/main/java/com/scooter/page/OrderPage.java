@@ -35,6 +35,8 @@ public class OrderPage extends BasePage {
     private final By acceptButtonElement = By.xpath(".//button[text()='Да']");
     // Кнопка перехода на статус заказа
     private final By statusButtonElement = By.xpath(".//button[text()='Посмотреть статус']");
+    // Форма статуса заказа
+    private final By statusForm = By.className("Track_Content__St6Kn");
 
     public OrderPage(WebDriver driver) {
         super(driver);
@@ -104,12 +106,16 @@ public class OrderPage extends BasePage {
         checkAvailability(confirmationModalElement);
     }
 
-    public void waitForStatusButton() {
-        checkAvailability(statusButtonElement);
+    public Boolean isStatusButtonDisplayed() {
+        return findElement(statusButtonElement).isDisplayed();
     }
 
     public void isFormAvailable() {
         checkAvailability(firstPageElement);
+    }
+
+    public Boolean isStatusFormAvailable() {
+        return driver.findElement(statusForm).isDisplayed();
     }
 
     public Boolean headerEqualsTo(String text) {

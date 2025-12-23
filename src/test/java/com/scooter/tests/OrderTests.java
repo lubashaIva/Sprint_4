@@ -51,7 +51,7 @@ public class OrderTests extends BaseTest {
         // Проверяем, что форма отобразилась
         orderPage.isFormAvailable();
         // Проверяем корректность первого хэдера
-        Boolean isFirstHeaderCorrect = orderPage.headerEqualsTo("Для кого самокат");
+        Boolean isFirstHeaderCorrect = orderPage.headerEqualsTo(Resources.header1);
         assertTrue("Первый хэдер не корректен", isFirstHeaderCorrect);
         // Вводим имя
         orderPage.enterNameText(name);
@@ -66,7 +66,7 @@ public class OrderTests extends BaseTest {
         // Нажимаем на кнопку Далее
         orderPage.pressContinueButton();
         // Проверяем корректность второго хэдера
-        Boolean isSecondHeaderCorrect = orderPage.headerEqualsTo("Про аренду");
+        Boolean isSecondHeaderCorrect = orderPage.headerEqualsTo(Resources.header2);
         assertTrue("Второй хэдер не корректен", isSecondHeaderCorrect);
         // Вводим дату когда привезти самокат
         orderPage.enterWhenText(date);
@@ -83,8 +83,10 @@ public class OrderTests extends BaseTest {
         // Подтверждаем заказ на кнопку Да
         orderPage.clickOnAcceptButton();
         // Проверяем появилась ли финальная модалка
-        orderPage.waitForStatusButton();
+        assertTrue("Кнопка Статус Заказа не появилась", orderPage.isStatusButtonDisplayed());
         // Нажимаем на кнопку Статус Заказа
         orderPage.clickOnStatusButton();
+        // Проверяем доступна ли финальная форма заказа
+        assertTrue("Финальная форма не отобразилась", orderPage.isStatusFormAvailable());
     }
 }
