@@ -3,8 +3,6 @@ package com.scooter.page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MainPage extends BasePage {
     // Элемент дропдаун листа
@@ -15,8 +13,6 @@ public class MainPage extends BasePage {
     private final By orderBottomButtonElement = By.xpath(".//div[@class='Home_FinishButton__1_cWm']/button[text()='Заказать']");
     // Кнопка принятия куки
     private final By acceptCookieButton = By.xpath(".//button[text()='да все привыкли']");
-    // Количество айтемов в дропдаун листе
-    public static int numberOfItems = 7;
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -56,12 +52,10 @@ public class MainPage extends BasePage {
     }
 
     public Boolean isSubItemAppearedAt(int position) {
-        WebDriverWait wait = new WebDriverWait(driver, 1);
         // Маска для сабайтемов в дропдаун листе
         String subItemElementMask = "accordion__panel-";
         // Дожидаемся появления сабайтема
-        WebElement displayedElement = wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.id(subItemElementMask + position)));
+        WebElement displayedElement = driver.findElement(By.id(subItemElementMask + position));
         return displayedElement.isDisplayed();
     }
 }

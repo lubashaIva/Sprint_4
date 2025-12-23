@@ -1,11 +1,25 @@
 package com.scooter.tests;
 
-import com.scooter.page.MainPage;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import static org.junit.Assert.assertTrue;
 
+@RunWith(Parameterized.class)
 public class DropdownTests extends BaseTest {
+    private final int id;
+
+    public DropdownTests(int id) {
+        this.id = id;
+    }
+
+    @Parameterized.Parameters
+    public static Object[][] getDateSetForOrder() {
+        return new Object[][]{
+                { 0 }, { 1 }, { 2 }, { 3 }, { 4 }, { 5 }, { 6 }, { 7 }
+        };
+    }
 
     @Test
     public void checkDropdown() {
@@ -17,13 +31,10 @@ public class DropdownTests extends BaseTest {
         mainPage.scrollToDropDownElement();
         // Проверяем, что список на экране
         mainPage.isDropDownListAvailable();
-        // Находим и кликаем на элементы списка в цикле
-        for(int i = 0; i < MainPage.numberOfItems; i++) {
-            // Кликаем на айтем
-            mainPage.clickOnItemAt(i);
-            // Дождись появления карточки и кнопки удаления
-            Boolean isSubItemDisplayed = mainPage.isSubItemAppearedAt(i);
-            assertTrue("Подстрочка после клика не появилась", isSubItemDisplayed);
-        }
+        // Кликаем на айтем
+        mainPage.clickOnItemAt(id);
+        // Дождись появления карточки и кнопки удаления
+        Boolean isSubItemDisplayed = mainPage.isSubItemAppearedAt(id);
+        assertTrue("Подстрочка после клика не появилась", isSubItemDisplayed);
     }
 }
