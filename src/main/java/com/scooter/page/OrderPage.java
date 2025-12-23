@@ -42,42 +42,33 @@ public class OrderPage extends BasePage {
         super(driver);
     }
 
-    public void enterNameText(String text) {
-        enterText(text, nameInputElement);
+    public void fillFirstForm(String name, String familyName, String address, String metroStation, String phoneNumber) {
+        enterText(name, nameInputElement);
+        enterText(familyName, familyNameInputElement);
+        enterText(address, addressInputElement);
+        enterMetroStation(metroStation);
+        enterText(phoneNumber, phoneNumberInputElement);
     }
 
-    public void enterFamilyNameText(String text) {
-        enterText(text, familyNameInputElement);
-    }
-
-    public void enterAddressText(String text) {
-        enterText(text, addressInputElement);
-    }
-
-    public void enterMetroStation(String text) {
+    private void enterMetroStation(String text) {
         clickOnElement(metroStationInputElement);
         By stationElement = By.xpath(".//div[text()='" + text + "']");
         scrollToElement(stationElement);
         clickOnElement(stationElement);
     }
 
-    public void enterPhoneText(String text) {
-        enterText(text, phoneNumberInputElement);
-    }
-
-    public void enterCommentText(String text) {
-        enterText(text, commentInputElement);
+    public void fillSecondForm(String date, String period, String color, String comment) {
+        enterText(date, whenInputElement);
+        enterPeriodText(period);
+        chooseColor(color);
+        enterText(comment, commentInputElement);
     }
 
     public void pressContinueButton() {
         clickOnElement(continueButtonElement);
     }
 
-    public void enterWhenText(String text) {
-        enterText(text, whenInputElement);
-    }
-
-    public void enterPeriodText(String text) {
+    private void enterPeriodText(String text) {
         clickOnElement(headerElement);
         clickOnElement(periodInputElement);
         By element = By.xpath(".//div[text()='" + text + "']");
@@ -85,7 +76,7 @@ public class OrderPage extends BasePage {
         clickOnElement(element);
     }
 
-    public void chooseColor(String text) {
+    private void chooseColor(String text) {
         By chosenColor = By.xpath(".//label[text()='" + text + "']");
         clickOnElement(chosenColor);
     }

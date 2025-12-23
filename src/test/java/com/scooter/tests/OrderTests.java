@@ -53,29 +53,15 @@ public class OrderTests extends BaseTest {
         // Проверяем корректность первого хэдера
         Boolean isFirstHeaderCorrect = orderPage.headerEqualsTo(Resources.header1);
         assertTrue("Первый хэдер не корректен", isFirstHeaderCorrect);
-        // Вводим имя
-        orderPage.enterNameText(name);
-        // Вводим фамилию
-        orderPage.enterFamilyNameText(surname);
-        // Вводим адрес
-        orderPage.enterAddressText(address);
-        // Вводим станцию метро
-        orderPage.enterMetroStation(subway);
-        // Вводим номер телефона
-        orderPage.enterPhoneText(phoneNumber);
+        // Заполняем первую форму
+        orderPage.fillFirstForm(name, surname, address, subway, phoneNumber);
         // Нажимаем на кнопку Далее
         orderPage.pressContinueButton();
         // Проверяем корректность второго хэдера
         Boolean isSecondHeaderCorrect = orderPage.headerEqualsTo(Resources.header2);
         assertTrue("Второй хэдер не корректен", isSecondHeaderCorrect);
-        // Вводим дату когда привезти самокат
-        orderPage.enterWhenText(date);
-        // Вводим срок аренды
-        orderPage.enterPeriodText(rentalPeriod);
-        // Выбираем цвет
-        orderPage.chooseColor(color);
-        // Вводим комментарий
-        orderPage.enterCommentText(comment);
+        // Заполняем вторую форму
+        orderPage.fillSecondForm(date, rentalPeriod, color, comment);
         // Нажимаем кнопку Заказать
         orderPage.clickOnOrderButton();
         // Ждем появление диалогового окна
