@@ -51,14 +51,14 @@ public class OrderTests extends BaseTest {
         // Проверяем, что форма отобразилась
         orderPage.isFormAvailable();
         // Проверяем корректность первого хэдера
-        Boolean isFirstHeaderCorrect = orderPage.headerEqualsTo(Resources.header1);
+        Boolean isFirstHeaderCorrect = orderPage.headerEqualsTo(Resources.forWhomHeader);
         assertTrue("Первый хэдер не корректен", isFirstHeaderCorrect);
         // Заполняем первую форму
         orderPage.fillFirstForm(name, surname, address, subway, phoneNumber);
         // Нажимаем на кнопку Далее
         orderPage.pressContinueButton();
         // Проверяем корректность второго хэдера
-        Boolean isSecondHeaderCorrect = orderPage.headerEqualsTo(Resources.header2);
+        Boolean isSecondHeaderCorrect = orderPage.headerEqualsTo(Resources.rentalHeader);
         assertTrue("Второй хэдер не корректен", isSecondHeaderCorrect);
         // Заполняем вторую форму
         orderPage.fillSecondForm(date, rentalPeriod, color, comment);

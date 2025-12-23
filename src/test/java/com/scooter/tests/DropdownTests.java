@@ -19,14 +19,14 @@ public class DropdownTests extends BaseTest {
     @Parameterized.Parameters(name = "Question: {0}, Answer: {1}")
     public static Object[][] getDateSetForOrder() {
         return new Object[][]{
-                { 0, Resources.answer1 },
-                { 1, Resources.answer2 },
-                { 2, Resources.answer3 },
-                { 3, Resources.answer4 },
-                { 4, Resources.answer5 },
-                { 5, Resources.answer6 },
-                { 6, Resources.answer7 },
-                { 7, Resources.answer8 }
+                { 0, Resources.paymentAnswer},
+                { 1, Resources.orderAnswer},
+                { 2, Resources.dateAnswer},
+                { 3, Resources.howQuickAnswer},
+                { 4, Resources.supportPhoneAnswer},
+                { 5, Resources.scooterBatteryAnswer},
+                { 6, Resources.penaltyAnswer},
+                { 7, Resources.locationAnswer}
         };
     }
 
