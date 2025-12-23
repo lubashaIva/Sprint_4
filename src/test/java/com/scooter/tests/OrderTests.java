@@ -1,4 +1,4 @@
-package praktikum.tests;
+package com.scooter.tests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

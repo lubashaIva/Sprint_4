@@ -1,6 +1,6 @@
-package praktikum.tests;
+package com.scooter.tests;
 
-import Scooter.MainPage;
+import com.scooter.page.MainPage;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

@@ -1,7 +1,7 @@
-package praktikum.tests;
+package com.scooter.tests;
 
-import Scooter.MainPage;
-import Scooter.OrderPage;
+import com.scooter.page.MainPage;
+import com.scooter.page.OrderPage;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
