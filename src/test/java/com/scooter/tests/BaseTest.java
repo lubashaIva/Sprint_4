@@ -21,6 +21,8 @@ public class BaseTest {
         } else if (browser.equals("firefox")) {
             startBrowserFirefox();
         }
+        // Разворачиваем браузер на весь экран
+        driver.manage().window().maximize();
 
         mainPage = new MainPage(driver);
         orderPage = new OrderPage(driver);
