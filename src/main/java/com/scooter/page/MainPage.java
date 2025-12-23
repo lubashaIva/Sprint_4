@@ -3,6 +3,8 @@ package com.scooter.page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MainPage extends BasePage {
     // Элемент дропдаун листа
@@ -51,11 +53,17 @@ public class MainPage extends BasePage {
         element.click();
     }
 
-    public Boolean isSubItemAppearedAt(int position) {
+    public WebElement subItemAppearedAt(int position) {
+        WebDriverWait wait = new WebDriverWait(driver, 1);
         // Маска для сабайтемов в дропдаун листе
         String subItemElementMask = "accordion__panel-";
-        // Дожидаемся появления сабайтема
-        WebElement displayedElement = driver.findElement(By.id(subItemElementMask + position));
-        return displayedElement.isDisplayed();
+        // Возвращаем сабайтем
+        return wait.until(ExpectedConditions
+                .visibilityOfElementLocated(By.id(subItemElementMask + position)));
+    }
+
+    public Boolean isSubItemTextMatches(WebElement element, String text) {
+        // Сравниваем текст сабайтема с целевым
+        return element.getText().equals(text);
     }
 }
