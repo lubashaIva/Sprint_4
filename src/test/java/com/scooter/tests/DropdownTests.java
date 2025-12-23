@@ -3,7 +3,6 @@ package com.scooter.tests;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebElement;
 
 import static org.junit.Assert.assertTrue;
 
@@ -44,10 +43,10 @@ public class DropdownTests extends BaseTest {
         // Кликаем на айтем
         mainPage.clickOnItemAt(id);
         // Дождись появления карточки и кнопки удаления
-        WebElement displayedSubItem = mainPage.subItemAppearedAt(id);
-        assertTrue("Подстрочка после клика не появилась", displayedSubItem.isDisplayed());
+        Boolean displayedSubItem = mainPage.isSubItemAppearedAt(id);
+        assertTrue("Подстрочка после клика не появилась", displayedSubItem);
         // Проверяем текст ответа на вопрос
-        Boolean isTextMatching = mainPage.isSubItemTextMatches(displayedSubItem, text);
+        Boolean isTextMatching = mainPage.isSubItemTextMatches(id, text);
         assertTrue("Текст сабайтема " + id + " различается", isTextMatching);
     }
 }

@@ -53,16 +53,19 @@ public class MainPage extends BasePage {
         element.click();
     }
 
-    public WebElement subItemAppearedAt(int position) {
+    public Boolean isSubItemAppearedAt(int position) {
         WebDriverWait wait = new WebDriverWait(driver, 1);
         // Маска для сабайтемов в дропдаун листе
         String subItemElementMask = "accordion__panel-";
         // Возвращаем сабайтем
         return wait.until(ExpectedConditions
-                .visibilityOfElementLocated(By.id(subItemElementMask + position)));
+                .visibilityOfElementLocated(By.id(subItemElementMask + position)))
+                .isDisplayed();
     }
 
-    public Boolean isSubItemTextMatches(WebElement element, String text) {
+    public Boolean isSubItemTextMatches(int position, String text) {
+        String subItemElementMask = "accordion__panel-";
+        WebElement element = driver.findElement(By.id(subItemElementMask + position));
         // Сравниваем текст сабайтема с целевым
         return element.getText().equals(text);
     }
